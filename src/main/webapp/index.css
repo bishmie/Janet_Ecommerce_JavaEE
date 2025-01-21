@@ -1,0 +1,246 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.upperBoarder {
+    background-color: #6cad61;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+}
+
+#janetlogo{
+    margin: 0;
+}
+.header-row {
+    padding: 0 0;
+    /*margin-bottom: 0;*/
+}
+.header-icons i {
+    font-size: 20px;
+    margin-left: 15px;
+    color: #333;
+}
+.header-icons i:hover {
+    color: #919191;
+}
+
+#navbarNav{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: white;
+    margin-top: 1px;
+}
+
+#navbarNav li {
+    margin-right: 20px;
+}
+
+#navbarNav li a{
+    font-size: 14px;
+    color: black;
+}
+
+#navbarNav li a:hover{
+    color: #919191;
+}
+
+.navbar-expand-lg{
+    background: white !important;
+
+}
+.hr{
+    color:#919191;
+}
+
+.discountimg-wrapper {
+    position: relative;
+    overflow: hidden; /* Hide the overflow when zooming */
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 50px;
+    margin-top: 30px;
+
+
+}
+
+.discountimg {
+    transition: transform 0.3s ease, filter 0.3s ease;
+    width: 500px;
+    height: auto;
+}
+
+.discountimg-wrapper:hover .discountimg {
+    transform: scale(1.1); /* Slight zoom in */
+}
+
+/*.card{*/
+/*margin-top: 20px;*/
+/*}*/
+
+.imgcards{
+    background: #ededed;
+    padding-bottom: 50px;
+    padding-top: 50px;
+
+}
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Adds a shadow for emphasis */
+}
+
+.card-body h5{
+    font-size: 12px;
+}
+
+.card-text{
+    font-size: 12px;
+    color: #919191;
+}
+.text-body-secondary{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.add-to-cart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    color: #6cad61;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.add-to-cart:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.image-card {
+    border: 1px solid #6cad61;
+    margin: 10px; /* Adds margin around each card */
+    padding: 10px; /* Adds padding inside the card */
+    border-radius: 8px; /* Optional rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a shadow for a sleek look */
+}
+
+.image-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px; /* Optional: rounded corners for images */
+}
+
+.image-card:hover {
+    transform: translateY(-10px); /* Slight lift effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increased shadow */
+}
+
+.image-card:hover img {
+    transform: scale(1.1); /* Zoom-in effect */
+}
+
+
+.bundle{
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+
+
+
+
+.glowRange {
+    position: relative; /* Position context for children */
+    z-index: -1;
+    border-radius: 40px !important;
+}
+
+.image-container {
+    position: relative;
+    height: 100%;
+}
+
+/*.image-container img {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    object-fit: cover;*/
+/*}*/
+
+.text-overlay {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: hotpink;
+    text-align: center;
+    /*background: rgba(0, 0, 0, 0.5); !* Optional background for better readability *!*/
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.glowPara {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.glowPara2 {
+    font-size: 1.2rem;
+    margin: 10px 0 0;
+}
+
+/* All Products Section */
+.AllProducts {
+    background: #f8f9fa; /* Light gray background */
+
+    /*border-top: 2px solid #6cad61; !* Optional border for separation *!*/
+}
+
+.allTitle{
+    /*padding-top: 40px !important;*/
+    /*padding-bottom: 20px;*/
+    /*padding-left: 35px !important;*/
+    font-size: 27px;
+    padding-top: 50px;
+    padding-left: 120px;
+    padding-bottom: 30px !important;
+}
+
+#cart1{
+    color: orange;
+}
+
+#cart2{
+    color: orange;
+}
+
+#cart3{
+    color: orange;
+}
+
+#cart4{
+    color: orange;
+}
+
+
+.customer-feedback{
+    padding-top: 100px !important;
+    padding-bottom: 100px !important;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #919191; /* Change arrow icons to black */
+}
