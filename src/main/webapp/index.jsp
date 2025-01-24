@@ -60,8 +60,11 @@
 
         <!-- Icons (Right-Aligned) -->
         <div class="col text-end header-icons">
-            <i class="bi bi-search"></i>
-            <i class="bi bi-person-fill"></i>
+           <a href="">   <i class="bi bi-search"></i></a>
+
+            <a href="admin-login.jsp" class="icon-link">
+                <i class="bi bi-person-fill"></i>
+            </a>
             <i class="bi bi-cart"></i>
         </div>
     </div>
@@ -82,19 +85,19 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Shop All Products</a>
+                    <a class="nav-link" href="productCard.jsp">Shop All Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Browse Our Ranges</a>
+                    <a class="nav-link" href="product.jsp">Browse Our Ranges</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"> Shop Our Bundles</a>
+                    <a class="nav-link" href="admin.jsp"> Shop Our Bundles</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"> FAQs</a>
+                    <a class="nav-link" href="product-list.jsp"> FAQs</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"> Contact</a>
+                    <a class="nav-link" href="updateDeleteProduct.jsp"> Contact</a>
                 </li>
 
             </ul>

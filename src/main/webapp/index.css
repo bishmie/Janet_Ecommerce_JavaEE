@@ -240,7 +240,7 @@ body {
     padding-top: 100px !important;
     padding-bottom: 100px !important;
 }
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: #919191; /* Change arrow icons to black */
-}
+/*.carousel-control-prev-icon,*/
+/*.carousel-control-next-icon {*/
+/*    background-color: #919191; !* Change arrow icons to black *!*/
+/*}*/
