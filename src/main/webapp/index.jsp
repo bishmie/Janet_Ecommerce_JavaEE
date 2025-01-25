@@ -1,3 +1,5 @@
+<%@ page import="org.example.ecommercejavaee.dto.ProductDTO" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -91,7 +93,7 @@
                     <a class="nav-link" href="product.jsp">Browse Our Ranges</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="admin.jsp"> Shop Our Bundles</a>
+                    <a class="nav-link" href="product.jsp"> Shop Our Bundles</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="product-list.jsp"> FAQs</a>
@@ -143,123 +145,63 @@
 
 
 
-<!--image cards-->
 <section class="imgcards">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Our Products</h1>
+<%--        <a href="new-product-list" class="btn btn-primary w-100" style="background-color:#6cad61" role="button">SHOP Now</a>--%>
+        <a href="pimple-products" class="btn btn-primary w-100" style="background-color:#6cad61" role="button">SHOP Now</a>
 
-    <div class="container mt-4" >
-        <div class="row gy-4"> <!-- Add 'gy-4' for vertical spacing -->
-            <div class="col-lg-3 col-md-6"> <!-- 4 cards per row for large screens, 2 for medium screens -->
-                <div class="card">
-                    <img src="Assest/facewash.webp" class="card-img-top" alt="Facewash">
-                    <div class="card-body">
-                        <h5 class="card-title">Pimples Out Peppermint Face Wash</h5>
-                        <p class="card-text">84 reviews</p>
-                        <p class="card-text" ><small class="text-body-secondary">LKR.690</small></p>
-                    </div>
-                    <div class="add-to-cart">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <img src="Assest/soothingfront.webp" class="card-img-top" alt="Soothing Cream">
-                    <div class="card-body">
-                        <h5 class="card-title">Kohomba Medicated Soothing Pack</h5>
-                        <p class="card-text">66 reviews</p>
-                        <p class="card-text" ><small class="text-body-secondary">LKR.600</small></p>
-                    </div>
-                    <div class="add-to-cart">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <img src="Assest/nomaskfront.webp" class="card-img-top" alt="Mask">
-                    <div class="card-body">
-                        <h5 class="card-title">Pimples Out Spearmint Treatment</h5>
-                        <p class="card-text">300 reviews</p>
-                        <p class="card-text" ><small class="text-body-secondary">LKR.490</small></p>
-                    </div>
-                    <div class="add-to-cart">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <img src="Assest/roller.webp" class="card-img-top" alt="Face Roller">
-                    <div class="card-body">
-                        <h5 class="card-title">Janet Pimple Out- Clear Skin Roller Pen</h5>
-                        <p class="card-text"> 100 reviews</p>
-                        <p class="card-text" ><small class="text-body-secondary"> LKR.690</small></p>
-                    </div>
-                    <div class="add-to-cart">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                </div>
-            </div>
+        <div class="row gy-4"> <!-- Add 'gy-4' for spacing -->
 
+            <%
+                // Fetch the product list passed from the servlet
+                List<ProductDTO> productList = (List<ProductDTO>) request.getAttribute("productList");
+                if (productList != null && !productList.isEmpty()) {
+                    for (ProductDTO product : productList) {
+            %>
+            <!-- Dynamic Product Cards -->
             <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <img src="Assest/facwashlarge.webp" class="card-img-top" alt="Wipes">
+                <div class="card h-100">
+                    <img src="<%= product.getImage_path() %>" class="card-img-top" alt="<%= product.getProductName() %>">
                     <div class="card-body">
-                        <h5 class="card-title">Pimples Out Peppermint Face Wash </h5>
-                        <p class="card-text">40 reviews</p>
-                        <p class="card-text" ><small class="text-body-secondary">LKR.1100</small></p>
+                        <h5 class="card-title"><%= product.getProductName() %></h5>
+                        <p class="card-text text-muted"><%= product.getProductDescription() %></p>
+                        <p class="availableqty" style="font-size: 12px;"> <%= product.getProductQuantity() +" Products Available"%></p>
+                        <p class="card-text fw-bold">LKR. <%= product.getProductPrice() %></p>
+<%--                        <p class="card-text">Reviews: <%= product.getReviewsCount() %></p>--%>
                     </div>
-                    <div class="add-to-cart">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <img src="Assest/wipes.webp" class="card-img-top" alt="Wipes">
-                    <div class="card-body">
-                        <h5 class="card-title">Acne and Oil Control Cleansing Wipes</h5>
-                        <p class="card-text">10 reviews</p>
-                        <p class="card-text" ><small class="text-body-secondary">LKR.450</small></p>
-                    </div>
-                    <div class="add-to-cart">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                </div>
-            </div>
+                    <div class="add-to-cart text-center">
+                        <form action="Pimpleproduct-list.jsp" method="post">
+                            <input type="hidden" name="product_id" value="<%= product.getProduct_id() %>">
+                            <input type="hidden" name="product_name" value="<%= product.getProductName() %>">
+                            <input type="hidden" name="product_price" value="<%= product.getProductPrice() %>">
+                            <input type="hidden" name="product_quantity" value="<%=product.getProductQuantity() + "Products Available"%>">
 
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <img src="Assest/pack.webp" class="card-img-top" alt="Wipes">
-                    <div class="card-body">
-                        <h5 class="card-title">Kohomba Medicated Soothing Pack</h5>
-                        <p class="card-text">230 reviews</p>
-                        <p class="card-text" ><small class="text-body-secondary">LKR.1800</small></p>
-                    </div>
-                    <div class="add-to-cart">
-                        <i class="fas fa-shopping-cart"></i>
+
+                            <div class="add-to-cart1">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <img src="Assest/bodywashnew.jpg" class="card-img-top" alt="Wipes">
-                    <div class="card-body">
-                        <h5 class="card-title">Skin Clear Medicated Body Wash</h5>
-                        <p class="card-text">100 reviews</p>
-                        <p class="card-text"><small class="text-body-secondary">LKR.1900</small></p>
-                    </div>
-                    <div class="add-to-cart">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                </div>
+            <%
+                }
+            } else {
+            %>
+            <div class="alert alert-warning text-center" role="alert">
+                No products available at the moment.
             </div>
+            <% } %>
 
+
+
+            <!-- Add more static cards as required -->
 
         </div>
     </div>
 </section>
+
 
 
 <section class="bundle">
@@ -324,7 +266,7 @@
                         <p class="card-text">84 reviews</p>
                         <p class="card-text" ><small class="text-body-secondary">LKR.690</small></p>
                     </div>
-                    <div class="add-to-cart" id="cart1">
+                    <div class="add-to-cart1" id="cart1">
                         <i class="fas fa-shopping-cart"></i>
                     </div>
                 </div>
@@ -337,7 +279,7 @@
                         <p class="card-text">66 reviews</p>
                         <p class="card-text" ><small class="text-body-secondary">LKR.600</small></p>
                     </div>
-                    <div class="add-to-cart" id="cart2">
+                    <div class="add-to-cart1" id="cart2">
                         <i class="fas fa-shopping-cart"></i>
                     </div>
                 </div>
@@ -350,7 +292,7 @@
                         <p class="card-text">300 reviews</p>
                         <p class="card-text" ><small class="text-body-secondary">LKR.490</small></p>
                     </div>
-                    <div class="add-to-cart" id="cart3">
+                    <div class="add-to-cart1" id="cart3">
                         <i class="fas fa-shopping-cart"></i>
                     </div>
                 </div>
@@ -363,7 +305,7 @@
                         <p class="card-text"> 100 reviews</p>
                         <p class="card-text" ><small class="text-body-secondary"> LKR.690</small></p>
                     </div>
-                    <div class="add-to-cart" id="cart4">
+                    <div class="add-to-cart1" id="cart4">
                         <i class="fas fa-shopping-cart"></i>
                     </div>
                 </div>

@@ -9,6 +9,20 @@ import lombok.NoArgsConstructor;
 @Data
 public class ProductDTO {
     private int product_id;
+
+    @Override
+    public String toString() {
+        return "ProductDTO{" +
+                "product_id=" + product_id +
+                ", productName='" + productName + '\'' +
+                ", productDescription='" + productDescription + '\'' +
+                ", productPrice=" + productPrice +
+                ", productQuantity=" + productQuantity +
+                ", category_id=" + category_id +
+                ", image_path='" + image_path + '\'' +
+                '}';
+    }
+
     private String productName;
     private String productDescription;
     private double productPrice;

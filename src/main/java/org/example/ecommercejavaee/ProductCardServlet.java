@@ -18,15 +18,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/products")
+@WebServlet(name= "/products", value = "/product-card")
 public class ProductCardServlet extends HttpServlet {
 
     @Resource(name = "java:comp/env/jdbc/pool")
     private DataSource dataSource;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> products = new ArrayList<>();
         try (Connection connection = dataSource.getConnection()) {
             String sql = "SELECT id, name, description, price, quantity, category_id, image_path FROM products";
@@ -44,12 +43,13 @@ public class ProductCardServlet extends HttpServlet {
                     products.add(product);
                 }
             }
+            System.out.println(products);
         } catch (SQLException e) {
             e.printStackTrace();
             throw new ServletException("Database access error!");
         }
         request.setAttribute("products", products);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("products.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product-list.jsp");
         dispatcher.forward(request, response);
     }
 
