@@ -59,7 +59,7 @@ Deploy the application on an Apache Tomcat server.
 Access the application in your browser at http://localhost:8080/JanetAyurveda.
 
 🛒 Live Demo
-(Add a link or video showcasing the application in action.)
+https://www.youtube.com/watch?v=myEmxGEntbo
 
 🤝 Contributing
 Contributions are welcome! You can:
