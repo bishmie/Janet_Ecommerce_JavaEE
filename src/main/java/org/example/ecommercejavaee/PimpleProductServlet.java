@@ -8,16 +8,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
 import org.example.ecommercejavaee.dto.ProductDTO;
 
 import javax.sql.DataSource;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "PimpleServlet", value = "/pimple-products")
-public class PimpleServlet extends HttpServlet {
+public class PimpleProductServlet extends HttpServlet {
 
     @Resource(name = "java:comp/env/jdbc/pool")
     private DataSource dataSource;

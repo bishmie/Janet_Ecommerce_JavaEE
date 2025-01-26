@@ -24,7 +24,7 @@ public class ProductListServlet extends HttpServlet {
 
         @Override
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            List<ProductDTO> productList = new ArrayList<>();
+            List<ProductDTO> productList3 = new ArrayList<>();
             try (Connection connection = dataSource.getConnection()) {
                 // Query to fetch products
                 String sql = "SELECT * FROM products";
@@ -43,14 +43,14 @@ public class ProductListServlet extends HttpServlet {
                             resultSet.getString("image_path")
 
                     );
-                    productList.add(product);
+                    productList3.add(product);
                 }
 
                 // Set products in request scope
-                request.setAttribute("productList", productList);
+                request.setAttribute("productList3", productList3);
 
                 // Forward to JSP
-                request.getRequestDispatcher("product-list.jsp").forward(request, response);
+                request.getRequestDispatcher("shopAllProducts.jsp").forward(request, response);
 
             } catch (Exception e) {
                 e.printStackTrace();

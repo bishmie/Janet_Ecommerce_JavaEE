@@ -80,17 +80,14 @@
 </nav>
 
 <section class="loginF">
-    <form class="Loginform">
+    <form action="customer-register-servlet" method="post" class="Loginform">
         <h2>Create Account</h2>
         <p class="loginP">If you want to create an account with us, please enter.</p>
         <div class="mb-3">
             <label for="exampleInputFirstName" class="form-label">First Name</label>
             <input type="text" class="form-control" id="exampleInputFirstName" aria-describedby="emailHelp">
         </div>
-        <div class="mb-3">
-            <label for="exampleInputLastName" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="exampleInputLastName" aria-describedby="emailHelp">
-        </div>
+
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -99,6 +96,11 @@
             <label for="exampleInputPassword1" class="form-label">Password</label>
             <input type="password" class="form-control" id="exampleInputPassword1">
 
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputLastName" class="form-label">Phone Number</label>
+            <input type="text" class="form-control" id="exampleInputLastName" aria-describedby="emailHelp">
         </div>
 
         <button type="submit" class="btn btn-primary">SIGN UP</button>

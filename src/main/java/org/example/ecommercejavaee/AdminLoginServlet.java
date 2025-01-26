@@ -40,7 +40,7 @@ public class AdminLoginServlet extends HttpServlet {
                     if (BCrypt.checkpw(password, storedPasswordHash)) {
                         // Login successful
                         req.getSession().setAttribute("user", rs.getString("user_name")); // store user info in session
-                        resp.sendRedirect("admin.jsp"); // redirect to dashboard
+                        resp.sendRedirect("index.jsp"); // redirect to dashboard
 
                     } else {
                         // Incorrect password

@@ -12,6 +12,23 @@
     <link rel="stylesheet" href="index.css">
 
     <style>
+
+        .add-to-cart1 {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: white;
+            color: #6cad61;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
         .image-card {
             border: 1px solid #6cad61;
             margin: 10px; /* Adds margin around each card */
@@ -34,6 +51,17 @@
         .image-card:hover img {
             transform: scale(1.1); /* Zoom-in effect */
         }
+        #shopbtn{
+            margin-bottom: 30px;
+            border: none;
+        }
+        #shopbtn1{
+            margin-bottom: 30px;
+            border: none;
+
+
+        }
+
 
     </style>
 
@@ -87,7 +115,7 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="productCard.jsp">Shop All Products</a>
+                    <a class="nav-link" href="shopAllProducts.jsp">Shop All Products</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="product.jsp">Browse Our Ranges</a>
@@ -147,9 +175,9 @@
 
 <section class="imgcards">
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Our Products</h1>
+        <h1 class="text-left mb-4" style="font-size: 27px">Pimple Range Products</h1>
 <%--        <a href="new-product-list" class="btn btn-primary w-100" style="background-color:#6cad61" role="button">SHOP Now</a>--%>
-        <a href="pimple-products" class="btn btn-primary w-100" style="background-color:#6cad61" role="button">SHOP Now</a>
+        <a href="pimple-products" id="shopbtn" class="btn btn-primary w-100 " style="background-color:#6cad61" role="button">SHOP Now</a>
 
         <div class="row gy-4"> <!-- Add 'gy-4' for spacing -->
 
@@ -166,21 +194,22 @@
                     <div class="card-body">
                         <h5 class="card-title"><%= product.getProductName() %></h5>
                         <p class="card-text text-muted"><%= product.getProductDescription() %></p>
-                        <p class="availableqty" style="font-size: 12px;"> <%= product.getProductQuantity() +" Products Available"%></p>
+                        <p class="availableqty" style="font-size: 12px;"> <%= product.getProductQuantity()%>  Products Available</p>
                         <p class="card-text fw-bold">LKR. <%= product.getProductPrice() %></p>
 <%--                        <p class="card-text">Reviews: <%= product.getReviewsCount() %></p>--%>
                     </div>
-                    <div class="add-to-cart text-center">
-                        <form action="Pimpleproduct-list.jsp" method="post">
+                    <div class="add-to-cart2 text-center">
+                        <form action="cart" method="post">
                             <input type="hidden" name="product_id" value="<%= product.getProduct_id() %>">
                             <input type="hidden" name="product_name" value="<%= product.getProductName() %>">
                             <input type="hidden" name="product_price" value="<%= product.getProductPrice() %>">
-                            <input type="hidden" name="product_quantity" value="<%=product.getProductQuantity() + "Products Available"%>">
+                            <input type="hidden" name="product_quantity" value="<%=product.getProductQuantity()%>">
 
-
+                            <button type="submit">
                             <div class="add-to-cart1">
                                 <i class="fas fa-shopping-cart"></i>
                             </div>
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -255,61 +284,56 @@
 
 <section class="allGlowProducts">
     <p class="allTitle">Glow Range Products</p>
+    <a href="glow-products" id="shopbtn1" class="btn btn-primary w-100 " style="background-color:orange" role="button">SHOP Now</a>
 
     <div class="container mt-4" >
         <div class="row gy-4"> <!-- Add 'gy-4' for vertical spacing -->
-            <div class="col-lg-3 col-md-6"> <!-- 4 cards per row for large screens, 2 for medium screens -->
-                <div class="card">
-                    <img src="Assest/Wild_Turmeric.webp" class="card-img-top" alt="Facewash">
-                    <div class="card-body">
-                        <h5 class="card-title">Pimples Out Peppermint Face Wash</h5>
-                        <p class="card-text">84 reviews</p>
-                        <p class="card-text" ><small class="text-body-secondary">LKR.690</small></p>
-                    </div>
-                    <div class="add-to-cart1" id="cart1">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                </div>
-            </div>
+
+            <%
+                // Fetch the product list passed from the servlet
+                List<ProductDTO> productList2 = (List<ProductDTO>) request.getAttribute("productList2");
+                if (productList2 != null && !productList2.isEmpty()) {
+                    for (ProductDTO product1 : productList2) {
+            %>
+
+
+            <!-- Dynamic Product Cards -->
             <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <img src="Assest/Fairness_Face_wash_100ml.webp" class="card-img-top" alt="Soothing Cream">
+                <div class="card h-100">
+                    <img src="<%= product1.getImage_path() %>" class="card-img-top" alt="<%= product1.getProductName() %>">
                     <div class="card-body">
-                        <h5 class="card-title">Kohomba Medicated Soothing Pack</h5>
-                        <p class="card-text">66 reviews</p>
-                        <p class="card-text" ><small class="text-body-secondary">LKR.600</small></p>
+                        <h5 class="card-title"><%= product1.getProductName() %></h5>
+                        <p class="card-text text-muted"><%= product1.getProductDescription() %></p>
+                        <p class="availableqty" style="font-size: 12px;"> <%= product1.getProductQuantity() +" Products Available"%></p>
+                        <p class="card-text fw-bold">LKR. <%= product1.getProductPrice() %></p>
+                        <%--                        <p class="card-text">Reviews: <%= product.getReviewsCount() %></p>--%>
                     </div>
-                    <div class="add-to-cart1" id="cart2">
-                        <i class="fas fa-shopping-cart"></i>
+                    <div class="add-to-cart3 text-center">
+                        <form action="GlowProducts.jsp" method="post">
+                            <input type="hidden" name="product_id" value="<%= product1.getProduct_id() %>">
+                            <input type="hidden" name="product_name" value="<%= product1.getProductName() %>">
+                            <input type="hidden" name="product_price" value="<%= product1.getProductPrice() %>">
+                            <input type="hidden" name="product_quantity" value="<%=product1.getProductQuantity() + "Products Available"%>">
+
+
+                            <div class="add-to-cart1" id="cart1">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <img src="Assest/Orange_c1.webp" class="card-img-top" alt="Mask">
-                    <div class="card-body">
-                        <h5 class="card-title">Pimples Out Spearmint Treatment</h5>
-                        <p class="card-text">300 reviews</p>
-                        <p class="card-text" ><small class="text-body-secondary">LKR.490</small></p>
-                    </div>
-                    <div class="add-to-cart1" id="cart3">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                </div>
+            <%
+                }
+            } else {
+            %>
+            <div class="alert alert-warning text-center" role="alert">
+                No products available at the moment.
             </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <img src="Assest/Real_Papaya_Face_wash_100ml.webp" class="card-img-top" alt="Face Roller">
-                    <div class="card-body">
-                        <h5 class="card-title">Janet Pimple Out- Clear Skin Roller Pen</h5>
-                        <p class="card-text"> 100 reviews</p>
-                        <p class="card-text" ><small class="text-body-secondary"> LKR.690</small></p>
-                    </div>
-                    <div class="add-to-cart1" id="cart4">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                </div>
-            </div>
+            <% } %>
+
+
+
 
 
         </div>
