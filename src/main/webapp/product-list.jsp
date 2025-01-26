@@ -1,3 +1,7 @@
+<%--User: Bishmi--%>
+<%--Date: 1/25/2025--%>
+<%--Time: 4.23 PM--%>
+<%--To change this template use File | Settings | File Templates.--%>
 
 <%@ page import="java.util.List" %>
 <%@ page import="org.example.ecommercejavaee.dto.ProductDTO" %>
@@ -126,20 +130,20 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <img src="Assest/janetlogo-removebg-preview.png" alt="Admin Logo" id="adminlogo">
-        <a href="#">Home</a>
-        <a href="#">Dashboard</a>
-        <a href="#">Customers</a>
-        <a href="#">Products</a>
-        <a href="#">Categories</a>
+        <a href="admin.jsp">Home</a>
+        <a href="admin.jsp">Dashboard</a>
+        <a href="user-list.jsp">Users</a>
+        <a href="product.jsp">Products</a>
+        <a href="category.jsp">Categories</a>
     </div>
 
 <div class="container">
 
 
-    <h1>Product Management</h1>
+    <h1 style="color: #6cad61; text-align: left;font-size: 27px">Product Management</h1>
 
     <%
-        List<ProductDTO> dataList = (List<ProductDTO>) request.getAttribute("productList");
+        List<ProductDTO> dataList = (List<ProductDTO>) request.getAttribute("productList3");
         if (dataList != null && !dataList.isEmpty()) {
     %>
     <div class="table-responsive">

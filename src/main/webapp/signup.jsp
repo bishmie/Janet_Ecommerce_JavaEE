@@ -1,120 +1,177 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Bishmi
-  Date: 1/22/2025
-  Time: 3:02 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Janet Store</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
-    <link rel="stylesheet" href="login.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+        }
 
+        .upperBoarder {
+            background-color: #6cad61;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 14px;
+            color: white;
+        }
+
+        .header-row {
+            padding: 0 0;
+        }
+
+        .header-icons i {
+            font-size: 20px;
+            margin-left: 15px;
+            color: #333;
+        }
+
+        .header-icons i:hover {
+            color: #919191;
+        }
+
+        #navbarNav {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            background: white;
+            margin-top: 1px;
+        }
+
+        #navbarNav li {
+            margin-right: 20px;
+        }
+
+        #navbarNav li a {
+            font-size: 14px;
+            color: black;
+        }
+
+        #navbarNav li a:hover {
+            color: #919191;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            background-color: #f5f5f5;
+        }
+
+        .form-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-card h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .form-card input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .form-card button {
+            width: 100%;
+            padding: 12px;
+            background-color: #6cad61;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .form-card button:hover {
+            background-color: #5aa254;
+        }
+
+        .form-text {
+            text-align: center;
+            font-size: 12px;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
-
 <!-- Top Message -->
 <p class="upperBoarder">We offer Island-wide delivery</p>
 
-<!-- Header Section -->
+<!-- Header -->
 <div class="container">
     <div class="row align-items-center header-row">
-        <!-- Empty Column (Left Space) -->
-        <div class="col"></div>
-
-        <!-- Logo Centered -->
+        <div class="col text-start"></div>
         <div class="col-auto">
-            <img src="Assest/janetlogo.png" class="d-block mx-auto" id="janetlogo" alt="Janet Logo" style="max-height: 100px;">
+            <img src="Assest/janetlogo.png" id="janetlogo" alt="Janet Logo">
         </div>
-
-        <!-- Icons (Right-Aligned) -->
         <div class="col text-end header-icons">
-            <i class="bi bi-search"></i>
-            <a href="login.jsp" class="icon-link">
-                <i class="bi bi-person-fill"></i>
-            </a>
+            <a href="#"><i class="bi bi-search"></i></a>
+            <a href="admin-login.jsp"><i class="bi bi-person-fill"></i></a>
             <i class="bi bi-cart"></i>
         </div>
     </div>
 </div>
 
-<hr class="hr">
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg" style="display: none">
     <div class="container-fluid">
-        <!--        <a class="navbar-brand" href="#">Navbar</a>-->
-        <!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
-        <!--            <span class="navbar-toggler-icon"></span>-->
-        <!--        </button>-->
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Shop All Products</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Browse Our Ranges</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"> Shop Our Bundles</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"> FAQs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"> Contact</a>
-                </li>
-
+                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="shopAllProducts.jsp">Shop All Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="product.jsp">Browse Our Ranges</a></li>
+                <li class="nav-item"><a class="nav-link" href="product.jsp">Shop Our Bundles</a></li>
+                <li class="nav-item"><a class="nav-link" href="product-list.jsp">FAQs</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<section class="loginF">
-    <form action="customer-register-servlet" method="post" class="Loginform">
+<!-- Form Section -->
+<div class="form-container">
+    <div class="form-card">
         <h2>Create Account</h2>
-        <p class="loginP">If you want to create an account with us, please enter.</p>
-        <div class="mb-3">
-            <label for="exampleInputFirstName" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="exampleInputFirstName" aria-describedby="emailHelp">
-        </div>
+        <form action="admin-register-servlet" method="post">
+            <input type="hidden" name="role" value="customer">
+            <input type="hidden" name="status" value="active">
 
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <!-- Name Field -->
+            <input type="text" name="user_name" placeholder="First and last name" required>
 
-        </div>
+            <!-- Email Field -->
+            <input type="text" name="email" placeholder="Enter your email" required>
 
-        <div class="mb-3">
-            <label for="exampleInputLastName" class="form-label">Phone Number</label>
-            <input type="text" class="form-control" id="exampleInputLastName" aria-describedby="emailHelp">
-        </div>
+            <!-- Password Field -->
+            <input type="password" name="password" placeholder="At least 6 characters" required>
+            <div class="form-text">Passwords must be at least 6 characters.</div>
 
-        <button type="submit" class="btn btn-primary">SIGN UP</button>
-    </form>
+            <!-- Re-enter Password Field -->
+            <input type="password" placeholder="Re-enter your password" required>
 
-    <div style="border-left: 1px solid #cfcdcd;" class="line"></div>
-    <div class="signup">
-        <h2>Already have an Account ?</h2>
-        <p class="signupPara mt-4" > Registering for this site allows you to access your order status and history. We’ll get a new account set up for you in no time. We’ll get a new account set up for you in no time. For this will only ask you for information necessary to make the purchase process faster and easier</p>
-       <a href="login.jsp">
-        <button type="button" class="btn btn-primary" id="signupbtn">LOGIN</button>
-       </a>
+            <!-- Submit Button -->
+            <button type="submit">Register</button>
+        </form>
+        <p class="form-text">
+            Already have an account? <a href="signin.jsp" style="color: #6cad61">Sign In</a>
+        </p>
     </div>
-</section>
-
+</div>
 </body>
 </html>

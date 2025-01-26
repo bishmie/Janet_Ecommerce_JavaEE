@@ -25,6 +25,8 @@ public class AdminLoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String emailOrPhone = req.getParameter("email"); // the parameter in the form
         String password = req.getParameter("password");
+        String role = req.getParameter("role");
+        String Email="janetAyurveda@gmail.com";
 
         try (Connection connection = dataSource.getConnection()) {
             // Query to check if the user exists with the given email or phone
@@ -38,20 +40,25 @@ public class AdminLoginServlet extends HttpServlet {
                     // If a record is found, compare the hashed password
                     String storedPasswordHash = rs.getString("password"); // stored hash from DB
                     if (BCrypt.checkpw(password, storedPasswordHash)) {
-                        // Login successful
-                        req.getSession().setAttribute("user", rs.getString("user_name")); // store user info in session
-                        resp.sendRedirect("index.jsp"); // redirect to dashboard
+                           if(Email.equals(emailOrPhone)){
+                               // Login successful
+                               req.getSession().setAttribute("user", rs.getString("user_name")); // store user info in session
+                               resp.sendRedirect("admin.jsp"); // redirect to dashboard
+                           }
+
+
+
 
                     } else {
                         // Incorrect password
                         req.setAttribute("error", "Invalid credentials. Please try again.");
-                        req.getRequestDispatcher("/admin-login.jsp").forward(req, resp);
+                        req.getRequestDispatcher("/admin.jsp").forward(req, resp);
 
                     }
                 } else {
                     // No user found with the given email/phone
                     req.setAttribute("error", "Invalid credentials. Please try again.");
-                    req.getRequestDispatcher("/admin-login.jsp").forward(req, resp);
+                    req.getRequestDispatcher("/admin.jsp").forward(req, resp);
                 }
             }
         } catch (SQLException e) {

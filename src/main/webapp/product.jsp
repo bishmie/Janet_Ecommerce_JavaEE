@@ -1,3 +1,8 @@
+
+<%--User: Bishmi--%>
+<%--Date: 1/22/2025--%>
+<%--Time: 7.45 PM--%>
+<%--To change this template use File | Settings | File Templates.--%>
 <%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,7 +87,7 @@
         <img src="Assest/janetlogo-removebg-preview.png" alt="Admin Logo" id="adminlogo">
         <a href="#">Home</a>
         <a href="#">Dashboard</a>
-        <a href="#">Customers</a>
+        <a href="#">Users</a>
         <a href="#">Products</a>
         <a href="#">Categories</a>
     </div>

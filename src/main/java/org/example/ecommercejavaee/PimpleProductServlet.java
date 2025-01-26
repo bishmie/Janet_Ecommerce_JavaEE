@@ -29,10 +29,10 @@ public class PimpleProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // List to store all products
-        List<ProductDTO> productList = new ArrayList<>();
+        List<ProductDTO> productList4 = new ArrayList<>();
 
         // Query to fetch all products
-        String query = "SELECT  product_name, product_description, product_price, product_quantity, category_id, image_path FROM products WHERE category_id = 2";
+        String query = "SELECT  product_name, product_description, product_price, product_quantity, category_id, image_path FROM products WHERE category_id = 4";
 
         try (Connection connection = dataSource.getConnection();
              PreparedStatement pst = connection.prepareStatement(query);
@@ -40,15 +40,15 @@ public class PimpleProductServlet extends HttpServlet {
 
             // Iterate through the result set and populate the product list
             while (rs.next()) {
-                ProductDTO product = new ProductDTO();
-                product.setProductName(rs.getString("product_name"));
-                product.setProductDescription(rs.getString("product_description"));
-                product.setProductPrice(rs.getDouble("product_price"));
-                product.setProductQuantity(rs.getInt("product_quantity"));
-                product.setCategory_id(rs.getInt("category_id"));
-                product.setImage_path(rs.getString("image_path"));
+                ProductDTO product2 = new ProductDTO();
+                product2.setProductName(rs.getString("product_name"));
+                product2.setProductDescription(rs.getString("product_description"));
+                product2.setProductPrice(rs.getDouble("product_price"));
+                product2.setProductQuantity(rs.getInt("product_quantity"));
+                product2.setCategory_id(rs.getInt("category_id"));
+                product2.setImage_path(rs.getString("image_path"));
 
-                productList.add(product);
+                productList4.add(product2);
             }
 
         } catch (SQLException e) {
@@ -58,7 +58,7 @@ public class PimpleProductServlet extends HttpServlet {
         }
 
         // Set the product list as a request attribute
-        request.setAttribute("productList", productList);
+        request.setAttribute("productList4", productList4);
 
         // Forward to JSP page for rendering
         request.getRequestDispatcher("/index.jsp").forward(request, response);

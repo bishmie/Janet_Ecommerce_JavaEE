@@ -50,7 +50,7 @@ public class ProductListServlet extends HttpServlet {
                 request.setAttribute("productList3", productList3);
 
                 // Forward to JSP
-                request.getRequestDispatcher("shopAllProducts.jsp").forward(request, response);
+                request.getRequestDispatcher("product-list.jsp").forward(request, response);
 
             } catch (Exception e) {
                 e.printStackTrace();

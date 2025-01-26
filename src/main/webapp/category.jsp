@@ -58,11 +58,11 @@
 <!-- Sidebar -->
 <div class="sidebar">
     <img src="Assest/janetlogo-removebg-preview.png" alt="Admin Logo" id="adminlogo">
-    <a href="#">Home</a>
-    <a href="#">Dashboard</a>
-    <a href="#">Customers</a>
-    <a href="#">Products</a>
-    <a href="#">Categories</a>
+    <a href="admin.jsp">Home</a>
+    <a href="admin.jsp">Dashboard</a>
+    <a href="user-list.jsp">Users</a>
+    <a href="product.jsp">Products</a>
+    <a href="category.jsp">Categories</a>
 </div>
 
 <!-- Main Content -->
@@ -72,10 +72,10 @@
     <!-- Add Category Form -->
     <form action="category-servlet" method="post" class="mt-4">
         <input type="hidden" name="action" value="add">
-        <div class="mb-3">
-            <label for="categoryId" class="form-label">Category ID</label>
-            <input type="text" class="form-control" id="categoryId" name="category_id" readonly>
-        </div>
+<%--        <div class="mb-3">--%>
+<%--            <label for="categoryId" class="form-label">Category ID</label>--%>
+<%--            <input type="text" class="form-control" id="categoryId" name="category_id" readonly>--%>
+<%--        </div>--%>
         <div class="mb-3">
             <label for="categoryName" class="form-label">Category Name</label>
             <input type="text" class="form-control" id="categoryName" name="category_name" required>

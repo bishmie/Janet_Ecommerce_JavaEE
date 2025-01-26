@@ -1,3 +1,8 @@
+<%--User: Bishmi--%>
+<%--Date: 1/22/2025--%>
+<%--Time: 2:51 PM--%>
+<%--To change this template use File | Settings | File Templates.--%>
+
 <%@ page import="org.example.ecommercejavaee.dto.ProductDTO" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -13,6 +18,51 @@
 
     <style>
 
+        .imgcards{
+            background: #ededed;
+            padding-bottom: 50px;
+            padding-top: 50px;
+
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+
+        }
+        .card1 {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        .card:hover {
+            transform: scale(1.05); /* Slight zoom effect */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Adds a shadow for emphasis */
+        }
+
+        .card-body h5{
+            font-size: 12px;
+        }
+
+        .card-text{
+            font-size: 12px;
+            color: #919191;
+        }
+        .text-body-secondary{
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+
+
+        .add-to-cart:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+
         .add-to-cart1 {
             position: absolute;
             top: 10px;
@@ -24,6 +74,7 @@
             height: 40px;
             display: flex;
             align-items: center;
+            border: none !important;
             justify-content: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -94,8 +145,10 @@
 
             <a href="admin-login.jsp" class="icon-link">
                 <i class="bi bi-person-fill"></i>
-            </a>
+            </a >
+            <a href="add-cart.jsp">
             <i class="bi bi-cart"></i>
+            </a>
         </div>
     </div>
 </div>
@@ -127,7 +180,7 @@
                     <a class="nav-link" href="product-list.jsp"> FAQs</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="updateDeleteProduct.jsp"> Contact</a>
+                    <a class="nav-link" href="admin.jsp"> Contact</a>
                 </li>
 
             </ul>
@@ -183,32 +236,32 @@
 
             <%
                 // Fetch the product list passed from the servlet
-                List<ProductDTO> productList = (List<ProductDTO>) request.getAttribute("productList");
-                if (productList != null && !productList.isEmpty()) {
-                    for (ProductDTO product : productList) {
+                List<ProductDTO> productList4 = (List<ProductDTO>) request.getAttribute("productList4");
+                if (productList4 != null && !productList4.isEmpty()) {
+                    for (ProductDTO product4 : productList4) {
             %>
             <!-- Dynamic Product Cards -->
             <div class="col-lg-3 col-md-6">
                 <div class="card h-100">
-                    <img src="<%= product.getImage_path() %>" class="card-img-top" alt="<%= product.getProductName() %>">
+                    <img src="<%= product4.getImage_path() %>" class="card-img-top" alt="<%= product4.getProductName() %>">
                     <div class="card-body">
-                        <h5 class="card-title"><%= product.getProductName() %></h5>
-                        <p class="card-text text-muted"><%= product.getProductDescription() %></p>
-                        <p class="availableqty" style="font-size: 12px;"> <%= product.getProductQuantity()%>  Products Available</p>
-                        <p class="card-text fw-bold">LKR. <%= product.getProductPrice() %></p>
+                        <h5 class="card-title"><%= product4.getProductName() %></h5>
+                        <p class="card-text text-muted"><%= product4.getProductDescription() %></p>
+                        <p class="availableqty" style="font-size: 12px;"> <%= product4.getProductQuantity()%>  Products Available</p>
+                        <p class="card-text fw-bold">LKR. <%= product4.getProductPrice() %></p>
 <%--                        <p class="card-text">Reviews: <%= product.getReviewsCount() %></p>--%>
                     </div>
                     <div class="add-to-cart2 text-center">
                         <form action="cart" method="post">
-                            <input type="hidden" name="product_id" value="<%= product.getProduct_id() %>">
-                            <input type="hidden" name="product_name" value="<%= product.getProductName() %>">
-                            <input type="hidden" name="product_price" value="<%= product.getProductPrice() %>">
-                            <input type="hidden" name="product_quantity" value="<%=product.getProductQuantity()%>">
+                            <input type="hidden" name="product_id" value="<%= product4.getProduct_id() %>">
+                            <input type="hidden" name="product_name" value="<%= product4.getProductName() %>">
+                            <input type="hidden" name="product_price" value="<%= product4.getProductPrice() %>">
+                            <input type="hidden" name="product_quantity" value="<%=product4.getProductQuantity()%>">
 
-                            <button type="submit">
-                            <div class="add-to-cart1">
+                            <button type="submit" class="add-to-cart1">
+
                                 <i class="fas fa-shopping-cart"></i>
-                            </div>
+
                             </button>
                         </form>
                     </div>
@@ -230,6 +283,109 @@
         </div>
     </div>
 </section>
+
+
+
+<%--<section class="imgcards">--%>
+<%--    <div class="container mt-5">--%>
+<%--        <h1 class="text-left mb-4" style="font-size: 27px">Pimple Range Products</h1>--%>
+<%--        <a href="pimple-products" id="shopbtn" class="btn btn-primary w-100" style="background-color:#6cad61" role="button">SHOP Now</a>--%>
+
+<%--        <div class="row gy-4"> <!-- Add 'gy-4' for spacing -->--%>
+
+<%--            <%--%>
+<%--                // Fetch the product list passed from the servlet--%>
+<%--                List<ProductDTO> productList = (List<ProductDTO>) request.getAttribute("productList");--%>
+<%--                if (productList != null && !productList.isEmpty()) {--%>
+<%--                    for (ProductDTO product : productList) {--%>
+<%--            %>--%>
+<%--            <!-- Dynamic Product Cards -->--%>
+<%--            <div class="col-lg-3 col-md-6">--%>
+<%--                <div class="card h-100">--%>
+<%--                    <img src="<%= product.getImage_path() %>" class="card-img-top" alt="<%= product.getProductName() %>">--%>
+<%--                    <div class="card-body">--%>
+<%--                        <h5 class="card-title"><%= product.getProductName() %></h5>--%>
+<%--                        <p class="card-text text-muted"><%= product.getProductDescription() %></p>--%>
+<%--                        <p class="availableqty" style="font-size: 12px;"> <%= product.getProductQuantity() %> Products Available</p>--%>
+<%--                        <p class="card-text fw-bold">LKR. <%= product.getProductPrice() %></p>--%>
+<%--                    </div>--%>
+<%--                    <div class="add-to-cart2 text-center">--%>
+<%--                        <form action="cart" method="post">--%>
+<%--                            <input type="hidden" name="product_id" value="<%= product.getProduct_id() %>">--%>
+<%--                            <input type="hidden" name="product_name" value="<%= product.getProductName() %>">--%>
+<%--                            <input type="hidden" name="product_price" value="<%= product.getProductPrice() %>">--%>
+<%--                            <input type="hidden" name="product_quantity" value="<%= product.getProductQuantity() %>">--%>
+
+<%--                            <button type="submit">--%>
+<%--                                <div class="add-to-cart1">--%>
+<%--                                    <i class="fas fa-shopping-cart"></i>--%>
+<%--                                </div>--%>
+<%--                            </button>--%>
+<%--                        </form>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <%--%>
+<%--                }--%>
+<%--            } else {--%>
+<%--            %>--%>
+<%--            <div class="alert alert-warning text-center" role="alert">--%>
+<%--                No products available at the moment.--%>
+<%--            </div>--%>
+<%--            <% } %>--%>
+
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</section>--%>
+
+
+<%--<section class="imgcards">--%>
+<%--    <div class="container mt-5">--%>
+<%--        <h1 class="text-left mb-4" style="font-size: 27px">Pimple Range Products</h1>--%>
+<%--                <a href="pimple-products" id="shopbtn" class="btn btn-primary w-100" style="background-color:#6cad61" role="button">SHOP Now</a>--%>
+
+<%--        <div class="row gy-4">--%>
+<%--            <%--%>
+<%--                List<ProductDTO> productList = (List<ProductDTO>) request.getAttribute("productList");--%>
+<%--                if (productList != null && !productList.isEmpty()) {--%>
+<%--                    for (ProductDTO product : productList) {--%>
+<%--            %>--%>
+<%--            <!-- Dynamic Product Cards -->--%>
+<%--            <div class="col-lg-3 col-md-6">--%>
+<%--                <div class="card h-100">--%>
+<%--                    <img src="<%= product.getImage_path() %>" class="card-img-top" alt="<%= product.getProductName() %>">--%>
+<%--                    <div class="card-body">--%>
+<%--                        <h5 class="card-title"><%= product.getProductName() %></h5>--%>
+<%--                        <p class="card-text text-muted"><%= product.getProductDescription() %></p>--%>
+<%--                        <p class="availableqty" style="font-size: 12px;"> <%= product.getProductQuantity() %> Products Available</p>--%>
+<%--                        <p class="card-text fw-bold">LKR. <%= product.getProductPrice() %></p>--%>
+<%--                    </div>--%>
+<%--                    <div class="add-to-cart2 text-center">--%>
+<%--                        <form action="cart" method="post">--%>
+<%--                            <input type="hidden" name="product_id" value="<%= product.getProduct_id() %>">--%>
+<%--                            <input type="hidden" name="product_name" value="<%= product.getProductName() %>">--%>
+<%--                            <input type="hidden" name="product_price" value="<%= product.getProductPrice() %>">--%>
+<%--                            <input type="hidden" name="product_quantity" value="<%= product.getProductQuantity() %>">--%>
+<%--                            <button type="submit">--%>
+<%--                                <div class="add-to-cart1">--%>
+<%--                                    <i class="fas fa-shopping-cart"></i>--%>
+<%--                                </div>--%>
+<%--                            </button>--%>
+<%--                        </form>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <%--%>
+<%--                }--%>
+<%--            } else {--%>
+<%--            %>--%>
+<%--            <div class="alert alert-warning text-center" role="alert">--%>
+<%--                No products available at the moment.--%>
+<%--            </div>--%>
+<%--            <% } %>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</section>--%>
 
 
 
@@ -284,41 +440,39 @@
 
 <section class="allGlowProducts">
     <p class="allTitle">Glow Range Products</p>
-    <a href="glow-products" id="shopbtn1" class="btn btn-primary w-100 " style="background-color:orange" role="button">SHOP Now</a>
+    <a href="glow-products" id="shopbtn1" class="btn btn-primary w-100" style="background-color:orange" role="button">SHOP Now</a>
 
-    <div class="container mt-4" >
+    <div class="container mt-4">
         <div class="row gy-4"> <!-- Add 'gy-4' for vertical spacing -->
 
             <%
                 // Fetch the product list passed from the servlet
                 List<ProductDTO> productList2 = (List<ProductDTO>) request.getAttribute("productList2");
                 if (productList2 != null && !productList2.isEmpty()) {
-                    for (ProductDTO product1 : productList2) {
             %>
 
-
             <!-- Dynamic Product Cards -->
-            <div class="col-lg-3 col-md-6">
+            <%
+                for (ProductDTO product : productList2) {
+            %>
+            <div class="col-lg-3 col-md-3 col-sm-6"> <!-- Change col-md-6 to col-md-3 for smaller cards -->
                 <div class="card h-100">
-                    <img src="<%= product1.getImage_path() %>" class="card-img-top" alt="<%= product1.getProductName() %>">
+                    <img src="<%= product.getImage_path() %>" class="card-img-top" alt="<%= product.getProductName() %>">
                     <div class="card-body">
-                        <h5 class="card-title"><%= product1.getProductName() %></h5>
-                        <p class="card-text text-muted"><%= product1.getProductDescription() %></p>
-                        <p class="availableqty" style="font-size: 12px;"> <%= product1.getProductQuantity() +" Products Available"%></p>
-                        <p class="card-text fw-bold">LKR. <%= product1.getProductPrice() %></p>
-                        <%--                        <p class="card-text">Reviews: <%= product.getReviewsCount() %></p>--%>
+                        <h5 class="card-title"><%= product.getProductName() %></h5>
+                        <p class="card-text text-muted"><%= product.getProductDescription() %></p>
+                        <p class="availableqty" style="font-size: 12px;"> <%= product.getProductQuantity() %> Products Available</p>
+                        <p class="card-text fw-bold">LKR. <%= product.getProductPrice() %></p>
                     </div>
                     <div class="add-to-cart3 text-center">
-                        <form action="GlowProducts.jsp" method="post">
-                            <input type="hidden" name="product_id" value="<%= product1.getProduct_id() %>">
-                            <input type="hidden" name="product_name" value="<%= product1.getProductName() %>">
-                            <input type="hidden" name="product_price" value="<%= product1.getProductPrice() %>">
-                            <input type="hidden" name="product_quantity" value="<%=product1.getProductQuantity() + "Products Available"%>">
-
-
-                            <div class="add-to-cart1" id="cart1">
+                        <form action="cart" method="post">
+                            <input type="hidden" name="product_id" value="<%= product.getProduct_id() %>">
+                            <input type="hidden" name="product_name" value="<%= product.getProductName() %>">
+                            <input type="hidden" name="product_price" value="<%= product.getProductPrice() %>">
+                            <input type="hidden" name="product_quantity" value="<%=product.getProductQuantity()%>">
+                            <button type="submit" class="add-to-cart1" id="cart1">
                                 <i class="fas fa-shopping-cart"></i>
-                            </div>
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -332,14 +486,10 @@
             </div>
             <% } %>
 
-
-
-
-
         </div>
     </div>
-
 </section>
+
 <!--    <div class="product-grid">-->
 <!--        <div class="product-item">-->
 <!--            <img src="Assest/facwashlarge.webp" alt="Product 1">-->
@@ -431,6 +581,61 @@
 </section>
 
 
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Janet Ayurveda Footer</title>
+    <style>
+        /* Basic CSS styling */
+        footer {
+            background-color: #4CAF50; /* Green background */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2 style="font-size: 1.2rem;">Quick Links</h2>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li><a href="#" style="font-size: 0.9rem; color: white; text-decoration: none;">Search</a></li>
+                    <li><a href="#" style="font-size: 0.9rem; color: white; text-decoration: none;">Privacy Policy</a></li>
+                    <li><a href="#" style="font-size: 0.9rem; color: white; text-decoration: none;">Refund Policy</a></li>
+                    <li><a href="#" style="font-size: 0.9rem; color: white; text-decoration: none;">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <h2 style="font-size: 1.2rem;">Corporate Office</h2>
+                <p style="font-size: 0.9rem; color: white;">The Janet Group Level #1, No 269, Galle Road, Mount Lavinia, Sri Lanka</p>
+            </div>
+            <div class="col">
+                <h2 style="font-size: 1.2rem;">Contact Details</h2>
+                <p style="font-size: 0.9rem; color: white;">Mobile: +94 777 684 684</p>
+                <p style="font-size: 0.9rem; color: white;">Tel: +94 114 200022</p>
+                <p style="font-size: 0.9rem; color: white;">Email: info@janet.lk</p>
+            </div>
+            <div class="col">
+                <h2 style="font-size: 1.2rem;">Follow Us on Social Media</h2>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li><a href="#" style="font-size: 0.9rem; color: white; text-decoration: none;"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#" style="font-size: 0.9rem; color: white; text-decoration: none;"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#" style="font-size: 0.9rem; color: white; text-decoration: none;"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <p style="font-size: 0.8rem; color: white;">&copy; 2025, Janet. Shopify Solution By Morpheus Digital</p>
+    </div>
+</footer>
+
+
+</body>
+</html>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

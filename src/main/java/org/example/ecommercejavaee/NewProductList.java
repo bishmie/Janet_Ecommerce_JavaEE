@@ -54,10 +54,10 @@ public class NewProductList extends HttpServlet {
         }
 
         // Set the product list as a request attribute
-        request.setAttribute("productList", productList);
+        request.setAttribute("productList3", productList);
 
         // Forward to JSP page for rendering
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/shopAllProducts.jsp").forward(request, response);
     }
 
 

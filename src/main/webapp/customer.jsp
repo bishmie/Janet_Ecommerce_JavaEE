@@ -60,12 +60,12 @@
 </head>
 <body>
 <div class="sidebar">
-    <img src="Assest/janetlogo-removebg-preview.png" alt="Janet Logo" id="adminlogo">
-    <a href="#">Home</a>
-    <a href="#">Dashboard</a>
-    <a href="#">Customers</a>
-    <a href="#">Products</a>
-    <a href="#">Orders</a>
+    <img src="Assest/janetlogo-removebg-preview.png" alt="Admin Logo" id="adminlogo">
+    <a href="admin.jsp">Home</a>
+    <a href="admin.jsp">Dashboard</a>
+    <a href="user-list.jsp">Users</a>
+    <a href="product.jsp">Products</a>
+    <a href="category.jsp">Categories</a>
 </div>
 
 <div class="content">
